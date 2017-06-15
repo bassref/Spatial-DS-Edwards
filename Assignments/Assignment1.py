@@ -337,10 +337,9 @@ class DrawGeoJson(object):
                 adjusted.append(self.convertGeoToPixel(x,y))
             self.adjusted_polys.append(adjusted)
             pygame.draw.polygon(self.screen, self.colors.get_random_color(), adjusted, boarder)
-            #left = min(gd.polygon_lookup[p_id])
-            #right = max(gd.polygon_lookup[p_id])
             
-    def draw_bound_box(key):
+            
+    def draw_bound_box(self, key):
         """
         Draws the bounding box for the country clicked in
         Args:
@@ -350,7 +349,7 @@ class DrawGeoJson(object):
         """
         longs = []
         lats = []
-        for p in adjust_poly_dictionary[key]:
+        for p in self.adjust_poly_dictionary[key]:
             longs.append(p[0])
             lats.append(p[1])
         
@@ -362,6 +361,9 @@ class DrawGeoJson(object):
         minLat = min(lats)
         wid = int(maxLong[0] - minLong[0])
         leng = int(maxLat[0] - minLat[0])
+
+        #left = min(gd.polygon_lookup[p_id])
+        #right = max(gd.polygon_lookup[p_id])
         
         pygame.draw.rect(self.screen, black, (maxLong[0], maxLat[1], wid, leng ), 6)
 
@@ -527,6 +529,7 @@ if __name__ == '__main__':
 
     # Main loop
     running = True
+    black = (0,0,0)
     while running:
        
         gd.draw_polygons()
@@ -545,9 +548,23 @@ if __name__ == '__main__':
                             print("Point in %s" % key)
                             #if the point is in the country then it is selected
                             gd.selected_polygon_dict[key] = True
-                            #gd.draw_polygons()                            
+                            #gd.draw_polygons()   
+                            pygame.draw.polygon(screen, black, poly, 5)                         
                             message_display(x,y-150)                            
                             #gd.draw_bound_box(key)
+                            longs = []
+                            lats = []
+                            for p in poly:
+                                longs.append(p[0])
+                                lats.append(p[1])
+                                maxLong = max(longs)
+                                minLong = min(longs)
+                                maxLat = max(lats)
+                                minLat = min(lats)
+                                wid = int(maxLong - minLong)
+                                leng = int(maxLat - minLat)
+                            pygame.draw.rect(screen, black, (minLong, minLat, wid, leng ), 3)
+
                             
                             
                         
