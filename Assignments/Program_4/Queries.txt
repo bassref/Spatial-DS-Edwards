@@ -1,0 +1,5 @@
+Queries
+
+1. All earthquakes occurring on the West coast with a magnitude of above 5.0 in the last 5 years
+2. All airports with an elevation above 500 which are not in the US
+3. Cities in Europe with names less than 8 letters
