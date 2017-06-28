@@ -28,9 +28,9 @@ for k,v in data.items():
           lon,
           lat
         ]
-    while n < 1000:
-      all_airports.append(gj)
-      n+=1
+    #while n < 1000:
+    all_airports.append(gj)
+    #  n+=1
 
 out = open("C:\\Users\\Esther\\Documents\\VisualDS\\Spatial-DS-Edwards\\Assignments\\Program_4\\geo_json\\airports.geojson","w")
 
