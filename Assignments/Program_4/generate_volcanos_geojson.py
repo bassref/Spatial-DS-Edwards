@@ -27,11 +27,11 @@ for v in data:
         lon,
         lat
     ]
-    while n < 1000:
-        all_volcanos.append(volcDict)
-        n+=1
+    #while n < 1000:
+    all_volcanos.append(volcDict)
+    #    n+=1
 
-out = open("C:\\Users\\Esther\\Documents\\VisualDS\\Spatial-DS-Edwards\\Assignments\\Program_4\\geo_json\\volcanos.geojson","w")
+out = open("C:\\Users\\Esther\\Documents\\VisualDS\\Spatial-DS-Edwards\\Assignments\\Program_5\\world_data\\volcanos.geojson","w")
 
 out.write(json.dumps(all_volcanos, sort_keys=False,indent=4, separators=(',', ': ')))
 

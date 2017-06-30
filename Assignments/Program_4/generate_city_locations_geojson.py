@@ -28,11 +28,10 @@ for key in data.keys():
           lon,
           lat
         ]
-        while n < 1000:
-          all_cities.append(cityDict)
-          n+=1
+        all_cities.append(cityDict)
+        
 
-out = open("C:\\Users\\Esther\\Documents\\VisualDS\\Spatial-DS-Edwards\\Assignments\\Program_4\\geo_json\\city_locations.geojson","w")
+out = open("C:\\Users\\Esther\\Documents\\VisualDS\\Spatial-DS-Edwards\\Assignments\\Program_5\\world_data\\city_locations.geojson","w")
 
 out.write(json.dumps(all_cities, sort_keys=False,indent=4, separators=(',', ': ')))
 

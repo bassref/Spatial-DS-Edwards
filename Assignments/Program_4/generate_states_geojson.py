@@ -23,12 +23,12 @@ for d in data:
     stateDict["geometry"] = {}
     stateDict['geometry']['type']="Polygon"
     stateDict['geometry']['coordinates'] = d["coordinates"] 
-    while n < 1000:
-        all_state_boarders.append(stateDict)
-        n+=1
+    #while n < 1000:
+    all_state_boarders.append(stateDict)
+    #    n+=1
 
 
-out = open("C:\\Users\\Esther\\Documents\\VisualDS\\Spatial-DS-Edwards\\Assignments\\Program_4\\geo_json\\states.geojson","w")
+out = open("C:\\Users\\Esther\\Documents\\VisualDS\\Spatial-DS-Edwards\\Assignments\\Program_5\\world_data\\states.geojson","w")
 
 out.write(json.dumps(all_state_boarders, sort_keys=False,indent=4, separators=(',', ': ')))
 
