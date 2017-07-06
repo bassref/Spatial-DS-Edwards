@@ -1,3 +1,11 @@
+"""
+Rephael Edwards
+Query 3
+This program executes a query to find the top 3-5 clusters of volcanos and earthquakes.
+The user enters the feature (volcanos or earthquakes), min # of points for a cluster , distance parameter for the db scan
+Sample Queries: 1) volcanos 10 50
+                2) earthquakes 20 100
+"""
 import os,sys
 import math
 from pymongo import MongoClient
@@ -184,23 +192,22 @@ if __name__ == '__main__':
     mh = mongoHelper()
     points_list = []
 
-    epsilon = 50
-    min_pts = 20
+    feature = sys.argv[1]
+    epsilon = int(sys.argv[2])
+    min_pts = int(sys.argv[3])
     
     
-    feature_list = [ 'earthquakes', 'volcanos', 'meteorite']
-    feature_name = ['meteorite_points', 'earthquake_points', 'volcano_points']
-    for feature in feature_list:
-        points = mh.get_doc_points(feature, 'geometry')
-        num = 0
-        for e in points:
-            if num < 500:
-                points_list.append(e)
-                num+=1
-        clusters = dbscan(points_list, epsilon, min_pts, debug=True)
-        print ('\n========== Results of Clustering  =============' % (feature))
-        for cluster, members in clusters.items():
-            print ('\n--------Cluster: %d---------' % cluster)
-            for point in members:
-               print (point)
+    
+    points = mh.get_doc_points(feature, 'geometry')
+    num = 0
+    for e in points:
+        if num < 500:
+            points_list.append(e)
+            num+=1
+    clusters = dbscan(points_list, epsilon, min_pts, debug=True)
+    print ('\n========== Results of Clustering  =============' % (feature))
+    for cluster, members in clusters.items():
+        print ('\n--------Cluster: %d---------' % cluster)
+        for point in members:
+           print (point)
     

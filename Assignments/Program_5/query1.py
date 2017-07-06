@@ -1,3 +1,9 @@
+"""
+
+This program executes a query to find the top 3-5 clusters of volcanos and earthquakes.
+Sample Queries: 1) volcanos 10 50
+                2) earthquakes 20 100
+"""
 import os,sys
 import math
 from pymongo import MongoClient
