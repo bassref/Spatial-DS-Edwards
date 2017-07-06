@@ -1,3 +1,12 @@
+"""
+Rephael Edwards
+Query#2
+This query returns the nearest volcano and earthquake based on a point.
+The user enters the feature, key, key value, number of records tobe returned, radius and the location as lon,lat
+Sample query:1) query2.py volcano altitude 5000 min 5 2005 138,33
+            2) query2.py earthquake magnitude 3 max 4 500 141,37
+
+"""
 import os,sys
 import math
 from pymongo import MongoClient
